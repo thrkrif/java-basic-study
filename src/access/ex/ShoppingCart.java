@@ -10,13 +10,11 @@ public class ShoppingCart {
             System.out.println("장바구니가 가득 찼습니다.");
             return;
         }
-        items[itemCount] = item;
-        itemCount++;
+        items[itemCount++] = item;  // 후위 연산자는 연산이 모두 종료된 이후에 실행된다.
     }
 
-    public void displayItems(){
-        System.out.println("장바구니 상품 출력");
-        for (int i = 0; i < itemCount; i++) {
+    public  void displayItems(){
+        for(int i = 0; i < itemCount; i++){
             Item item = items[i];
             System.out.println("상품명: " + item.getName() + ", 합계: " + item.getTotalPrice());
         }
@@ -24,11 +22,12 @@ public class ShoppingCart {
     }
 
     private int calculateTotalPrice(){
-        int total = 0;
+        int sum = 0;
         for(int i = 0; i < itemCount; i++){
-            total += items[i].getTotalPrice();
+            Item item = items[i];
+            sum +=  item.getTotalPrice();
         }
-        return total;
+        return sum;
     }
 
 }
