@@ -1,6 +1,6 @@
 package poly.basic;
 
-public class CastingMain5 {
+public class CastingMain6 {
     public static void main(String[] args) {
         Parent parent1 = new Parent();
         System.out.println("parent1 호출");
@@ -11,10 +11,11 @@ public class CastingMain5 {
     }
     private static void call(Parent parent) {
         parent.parentMethod();
-        if (parent instanceof Child) {
+        if (parent instanceof Child child) {
             System.out.println("Child 인스턴스 맞음");
-            Child child = (Child) parent;
             child.childMethod();
+            // 자바 16에서 나옴, if문 안에서 변수를 생성함. Child child = (Child) parent; 를 생략 가능한거임
+            // CastingMain5 처럼 따로 변수 만들어서 다운캐스팅 할 필요 없음.
         }
     }
 
